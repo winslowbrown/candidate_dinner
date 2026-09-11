@@ -9,6 +9,8 @@
 <style>html{color-scheme:light dark} body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
 </head>
 <body>
+<title>Candidate Dinner at Claud</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
   --bg:#EEF0EA; --paper:#F7F8F4; --ink:#1E2422; --ink-2:#4A5553; --ink-3:#7A8583;
@@ -69,11 +71,16 @@ code{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.9em}
 .meta span b{color:var(--ink-2);font-weight:500}
 
 /* nav */
-nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);margin:0 -20px;padding:10px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
-nav.toc::-webkit-scrollbar{display:none}
-nav.toc a{white-space:nowrap;font-size:.78rem;letter-spacing:.02em;text-decoration:none;color:var(--ink-2);padding:6px 10px;border:1px solid var(--rule);border-radius:999px;background:var(--paper)}
+nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);margin:0 calc(50% - 50vw);padding:8px 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+nav.toc a{white-space:nowrap;font-size:.76rem;letter-spacing:.02em;text-decoration:none;color:var(--ink-2);padding:5px 10px;border:1px solid var(--rule);border-radius:999px;background:var(--paper)}
 nav.toc a.w{border-color:var(--chard)}
 nav.toc a.r{border-color:var(--pinot)}
+nav.toc a:hover{background:var(--rule-2)}
+@media (max-width:900px){
+  nav.toc{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:thin;padding:10px 20px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent)}
+  nav.toc.at-end{-webkit-mask-image:none;mask-image:none}
+}
+h2[id],h3[id],div[id],section[id]{scroll-margin-top:calc(var(--navh,54px) + 16px)}
 
 /* program list */
 .program{list-style:none;padding:0;margin:0 0 8px;max-width:none}
@@ -100,7 +107,7 @@ mark{background:var(--mark);color:inherit;padding:0 2px}
 .kv{display:grid;grid-template-columns:minmax(110px,32%) 1fr;gap:0;border-top:1px solid var(--rule-2)}
 .kv div{padding:8px 0;border-bottom:1px solid var(--rule-2);font-size:.92rem}
 .kv .k{color:var(--ink-3);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding-top:10px;padding-right:10px}
-.kv .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.kv .num{font-variant-numeric:tabular-nums}
 .thirty{margin:16px 0 8px;padding:14px 16px;border-left:3px solid var(--slate);background:var(--paper)}
 .thirty .l{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;font-weight:500}
 .thirty p{margin:0;max-width:none}
@@ -172,6 +179,17 @@ details > *:not(summary){margin-top:10px}
   <a href="#todo">Service &amp; open questions</a>
   <a href="#appendix">Full dossiers</a>
 </nav>
+<script>
+(function(){
+  var nav=document.querySelector('nav.toc');if(!nav)return;
+  function setH(){document.documentElement.style.setProperty('--navh',nav.offsetHeight+'px')}
+  function atEnd(){nav.classList.toggle('at-end',nav.scrollLeft+nav.clientWidth>=nav.scrollWidth-4)}
+  setH();atEnd();
+  window.addEventListener('resize',function(){setH();atEnd()});
+  nav.addEventListener('scroll',atEnd,{passive:true});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(setH);
+})();
+</script>
 
 
 <h2 id="program">The program</h2>
@@ -183,9 +201,9 @@ details > *:not(summary){margin-top:10px}
   <li><span class="n">B2</span><span><span class="wine w">2014 Comtes Lafon Goutte d'Or</span> <small>vs</small> <span class="wine w">2014 Arnaud Ente La Goutte d'Or</span><small>the heart of Meursault</small></span></li>
   <li><span class="n">B3</span><span><span class="wine w">2014 Comtes Lafon Perrières</span> <small>vs</small> <span class="wine w">2014 Coche-Dury Perrières</span><small>the great premier cru slope</small></span></li>
   <li class="flight"><span class="n">C</span><span class="t">The Importance of Being Stemmed: A Comparative Grand Cru Study</span></li>
-  <li><span class="n">C1</span><span><span class="wine r">2010 Dujac Clos de la Roche</span> <small>vs</small> <span class="wine r">2010 Armand Rousseau Clos de la Roche</span></span></li>
-  <li><span class="n">C2</span><span><span class="wine r">2010 J.-F. Mugnier Bonnes-Mares</span> <small>vs</small> <span class="wine r">2010 Georges Roumier Bonnes-Mares</span></span></li>
-  <li><span class="n">C3</span><span><span class="wine r">2014 Domaine de la Romanée-Conti Échezeaux</span> <small>vs</small> <span class="wine r">2014 Comte Liger-Belair Échezeaux</span></span></li>
+  <li><span class="n">C1</span><span><span class="wine r">2010 Dujac Clos de la Roche</span> <small>vs</small> <span class="wine r">2010 Armand Rousseau Clos de la Roche</span><small>Morey-Saint-Denis</small></span></li>
+  <li><span class="n">C2</span><span><span class="wine r">2010 J.-F. Mugnier Bonnes-Mares</span> <small>vs</small> <span class="wine r">2010 Georges Roumier Bonnes-Mares</span><small>Chambolle-Musigny</small></span></li>
+  <li><span class="n">C3</span><span><span class="wine r">2014 Domaine de la Romanée-Conti Échezeaux</span> <small>vs</small> <span class="wine r">2014 Comte Liger-Belair Échezeaux</span><small>Flagey-Échezeaux</small></span></li>
 </ul>
 
 
@@ -228,6 +246,11 @@ details > *:not(summary){margin-top:10px}
   <li>The domaine dates to 1717; Joseph Leflaive (Polytechnicien, naval engineer) assembled 25 ha from 1905 in the phylloxera trough; the 1973 SCE holds ~40 family shareholders together. Brice's line: "we make a living from what we offer rather than what we take."</li>
   <li><strong>Not found:</strong> CellarTracker's 2019 page could not be read (bot-blocked), so the community reception of this vintage is unverified here.</li>
 </ul>
+
+<div class="know">
+<div class="yes"><div class="l">Established</div><ul><li>Leflaive's only Meursault: a Blagny-hillside parcel facing Perrières, Pinot Noir until 2002, Chardonnay from 1995/2004.</li><li>The one cuvée raised in 400-litre barrels, ~20–22% new; DIAM 30 from the 2014 vintage.</li><li>2019: picked from 10/11 Sept, ~38 hl/ha (−30%), 14–14.5% alcohol at pH ~3.1, sunburn in this parcel.</li><li>A Pierre Vincent wine, his third vintage — where Nanson, Morris and Blake all date the post-premox recovery.</li></ul></div>
+<div class="no"><div class="l">Unresolved</div><ul><li>Parcel size: 1.62 ha (importer sheets) vs 1.18 ha (domaine site) — primary sources disagree.</li><li>Whether horse ploughing extends to this parcel.</li><li>How the 2019 is drinking now: no JancisRobinson.com review, CellarTracker unread; October 2026 is early by every critic's window.</li></ul></div>
+</div>
 
 <h2 id="flight1">B1 · The Great Village Hillside — Roulot Tessons vs Coche-Dury Rougeots, 2011</h2>
 <p>Two adjoining lieux-dits on the north slope above the old village, at roughly the altitude of the southern premiers crus, farmed by cousins. Lavalle (1855) ranked Tessons <em>première cuvée</em> — level with the crus that became premiers crus — and Rougeots <em>deuxième</em>. Patrick Essa: "Le classement des parcelles, en dehors des premiers crus n'existent pas, pourtant il est d'usage de considérer certaines d'entre elles comme de véritables seconds crus." This lieu-dit labelling of village wine is, he says, "un fait quasiment unique dans la Côte des blancs" — and Guy Roulot and René Lafon started it in the 1960s.</p>
@@ -401,6 +424,11 @@ details > *:not(summary){margin-top:10px}
   <li>Nanson's rule of thumb: "about 7 years is needed to distinguish a great Perrières." Both are past it. Serve the Coche cool and decant 30–60 minutes for sulfides; the Lafon under DIAM may show a touch of reduction too.</li>
 </ul>
 
+<div class="know">
+<div class="yes"><div class="l">Established</div><ul><li>The two parcels touch: Lafon's ex-Gauffroy "Perrières Ginette" borders Coche's plot on the Dessus/Dessous line.</li><li>Lafon: ~0.9 ha in three parcels, mostly Dessous on the 1955 massal block; 21 hl/ha in 2014; the last vintage before a quarter of that block was pulled.</li><li>Coche: ~0.6 ha in two plots in Dessus and Aux Perrières; the last of the "short vintages" 2011–14.</li><li>Opposite anti-oxidation philosophies — Lafon's engineered protocol under DIAM; Coche's crushed-fruit reduction under natural cork.</li><li>Coche's Perrières passed the Tastevinage jury in 1981 (Neal Martin's 1979 bottle).</li></ul></div>
+<div class="no"><div class="l">Unresolved</div><ul><li>Coche's 2014 harvest date, and whether the 2014 was pressed on the Vaslin or the pneumatic.</li><li>Coche's new-oak share for the 2014 Perrières (30–50% is the best estimate).</li><li>Coche's exact parcel size — 0.5, 0.6 and 0.67 ha all appear in print.</li><li>No JancisRobinson.com note on the 2014 Coche; no Morris/Vinous score found.</li><li>Why Perrières was never made grand cru: Essa's "the growers wanted the word Meursault" is the only mechanism in print, not a documented vote.</li></ul></div>
+</div>
+
 <h2 id="stems">C · The Importance of Being Stemmed — the whole-cluster table</h2>
 <p>Six grands crus, three pairs, each pair from one climat and one vintage, each pair a stems-in versus stems-out decision. Every figure below is anchored to a dated statement by the winemaker or a critic who was in the cellar. "Range" is the confidence interval for the specific bottle; the reasoning and the full evidence tables, statement by statement, are in the flight sections and the appendix dossiers.</p>
 <div class="tbl">
@@ -531,6 +559,11 @@ details > *:not(summary){margin-top:10px}
 
 <h4>Confrérie hook for this flight</h4>
 <p>Both domaines donated to the April 2022 Sotheby's/Château du Clos de Vougeot charity auction for Cîteaux Abbey — the mother house of the monks who built the Clos — run with the Confrérie in the Grand Cellier — a Roumier Bonnes-Mares 2015 magnum, a Mugnier Musigny 2007 jeroboam. Leroy, DRC, Rousseau, Dujac, Lafon and Leflaive also gave — eight of the dinner's producers in one Confrérie-hosted cause. Neither domaine owns Clos de Vougeot today (Roumier's 1952 parcels went to the Hervé Roumier branch; Mugnier sold theirs after 1949).</p>
+
+<div class="know">
+<div class="yes"><div class="l">Established</div><ul><li>Neighbours across a wall on the Rue de Vergy; same cru, same cool millerandé 2010 at 11.5–12% natural.</li><li>Mugnier: one 0.36 ha strip running the full slope, ~1/3 terres rouges; 100% destemmed, always — "Except for experimental purposes."</li><li>Roumier: ~1.39 ha in four plots across both soils, vinified as two cuvées by soil and blended; stems used since the late 1980s, 60% in 2009.</li><li>Both prefer their own 2010 differently: Fred rates 2009 higher; Christophe prefers his 2010s "for their purity of fruit."</li><li>The 1988 two-cuvée experiment is the domaine's own controlled stems trial — and Neal Martin's blind verdicts on it have gone both ways.</li></ul></div>
+<div class="no"><div class="l">Unresolved</div><ul><li>Roumier's stem share for the 2010 Bonnes-Mares specifically: 30–50%, most likely 35–45% — no dated figure for this vintage.</li><li>Harvest dates at either domaine in 2010.</li><li>Roumier's new-oak share for the 2010 (30–40% is the best estimate) and the terres rouges/blanches split of the parcels (50:50 vs 0.9/0.6).</li><li>Whether the 2010 was chaptalised at Roumier — the 13.5% label against 11.5–12% natural is an inference.</li></ul></div>
+</div>
 
 <h2 id="flight6">C3 · Vosne-Romanée (Flagey) — DRC vs Liger-Belair, Échezeaux 2014</h2>
 <p>The Jayer/DRC Échezeaux argument, re-run in 2014. Herwig Janssen's summary of the 1990 pair: "Henri Jayer = early picking, cold maceration, chaptalization, complete destemming… mostly from the Cruots part of Echezeaux. DRC = later picking, cold maceration, less chaptalization, whole cluster, 18 months and more aging… mostly from the Poulaillères part." Liger-Belair holds 0.33 ha of Cruots, learned at Jayer's knee, and picked nine days before DRC. The two parcels are ~400 m apart across Échezeaux du Dessus. Curtis's line: "Flagey is doing a lot of the work, and Vosne is getting all the credit."</p>
